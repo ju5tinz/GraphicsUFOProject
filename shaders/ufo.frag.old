@@ -1,0 +1,56 @@
+#version 330 core
+// This is a sample fragment shader.
+
+// Inputs to the fragment shader are the outputs of the same name from the vertex shader.
+// Note that you do not have access to the vertex shader's default output, gl_Position.
+in vec3 Normal;
+in vec3 FragPos;
+
+uniform vec3 lightPos;
+uniform vec3 eyePos;
+
+// You can output many things. The first vec4 type output determines the color of the fragment
+out vec4 FragColor;
+
+void main()
+{
+/*
+	int material_shininess = 1;
+	float material_kd = 0.5;
+	float material_ks = 0.1;
+	vec3 ambientColor = vec3(0.30,0.5,0.20);
+
+	int levels = 5;
+	float scaleFactor = 1.0 / levels;
+	vec3 diffuseColor = vec3(0.30, 0.80, 0.10);
+
+	vec3 L = normalize(lightPos - FragPos);
+	vec3 V = normalize(eyePos - FragPos);
+
+	float diffuse = max(0, dot(L, Normal));
+	diffuseColor = diffuseColor * material_kd * floor(diffuse * levels) * scaleFactor;
+
+	vec3 H = normalize(L + V);
+
+	float specular = 0.0;
+
+	if( dot(L,Normal) > 0.0)
+	{
+		specular = material_ks * pow( max(0, dot( H, Normal)), material_shininess);
+	}
+
+	//limit specular
+	float specMask = (pow(dot(H, Normal), material_shininess) > 0.4) ? 1 : 0;
+ 
+	float edgeDetection = (dot(V, Normal) > 0.2) ? 1 : 0;
+ 
+	vec3 finalColor = edgeDetection * (ambientColor + diffuseColor + specular * specMask);
+ 
+	FragColor = vec4(finalColor,1);
+*/
+
+	vec3 result = (normalize(Normal) + vec3(1.0, 1.0, 1.0))/2;
+	FragColor = vec4(result, 1.0);
+
+	//FragColor = vec4(1.0, 1.0, 0, 1.0);
+}
